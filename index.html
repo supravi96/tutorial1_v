@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My vue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+
+    <div id="vue_det">
+        <h6>Firstname:- {{firstName}}</h6>
+        <h6>Lastname:- {{lastName}}</h6>
+        <div v-html="htmlcontent"></div>
+        <img v-bind:src="imagsrc" width="300" height="250" />
+    </div>
+
+    <div id="component_test">
+        <testcomponent></testcomponent>
+    </div>
+    <div id="component_test1">
+        <testcomponent></testcomponent>
+    </div>
+
+    <div id="databinding">
+        <component v-bind:is="view"></component>
+    </div>
+
+    <div id="computed_props">
+        FirstName :
+        <input type="text" v-model="firstname" />
+        <br/>
+        <br/> LastName :
+        <input type="text" v-model="lastname" />
+        <br/>
+        <br/>
+        <h6>My name is {{firstname}} {{lastname}}</h6>
+        <h6>Using computed method : {{getfullname}}</h6>
+    </div>
+
+    <div id="get_set_computed">
+        <input type="text" v-model="fullname" />
+        <h6>{{firstname}}</h6>
+        <h6>{{lastname}}</h6>
+    </div>
+
+    <div id="watch_prop">
+        Kilometers :
+        <input type="text" v-model="kilometers" /> Meters :
+        <input type="text" v-model="meters" />
+    </div>
+
+    <div id="binding">
+        {{title}}
+        <br>
+        <a href="hreflink" target="_blank">Click Me</a>
+        <br>
+        <a href="{{hreflink}}" target="_blank">Click Me</a>
+        <br>
+        <a v-bind:href="hreflink" target="_blank">Click Me</a>
+        <br>
+        <a :href="hreflink" target="_blank">Click Me</a>
+    </div>
+
+    <div id="classbinding">
+        <!-- <div class="info" v-bind:class="{active:isactive,displayError:hasError}">
+            <b>{{title}}</b>
+        </div> -->
+        <div v-bind:class="[isactive?infoclass:'',hasError?errorclass:'']">
+            <b>{{title}}</b>
+        </div>
+
+        <newcomponent class="{active:isactive}"></newcomponent>
+    </div>
+
+    <div id="events">
+
+        <button @click="displaynumbers">Click me</button>
+        <br>
+        <div v-bind:style="styleobj" @mouseover="changecolor" @mouseout="originalcolor">Click me</div>
+        <h6>Add number 100 + 200 = {{total}}</h6>
+    </div>
+
+    <div id="eventidentifiers">
+        <button @click.once="buttonclickedonce" v-bind:style="styleobj">Click Once</button>
+        Output:{{num1}}
+        <br>
+        <button @click="buttonclicked" v-bind:style="styleobj">Click </button>
+        Output:{{num2}}
+        <br>
+        <a href="http://www.google.com" v-on:click.prevent="clickme" target="_blank" v-bind:style="styleobj1">Click Me</a>
+    </div>
+
+    <div id="keymodifiers">
+        <input type="text" v-on:keyup.enter="showinputvalue" v-bind:style="styleobj" placeholder="Enter your name" />
+        <h6>{{name}}</h6>
+    </div>
+
+    <!-- parent -->
+    <div id="custom_events">
+
+        <!-- child component -->
+        <div id="child_component">
+
+            <p style="font-size: 25px">Language displayed :
+                <b> {{languageclicked}}
+            </p>
+
+            <buttoncounter v-for="(item,index) in languages" v-bind:item="item" v-bind:index="index" v-on:showlanguage="languagedisp"></buttoncounter>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="vue_template.js"></script>
+    <script src="vue_component.js"></script>
+    <script src="vue_computeprops.js"></script>
+    <script src="vue_get_set_computed.js"></script>
+    <script src="vue_watch_prop.js"></script>
+    <script src="vue_binding.js"></script>
+    <script src="vue.class_binding.js"></script>
+    <script src="vue_events.js"></script>
+    <script src="vue_key_modifiers.js"></script>
+    <script src="vue_custome_events.js"></script>
+</body>
+
+</html>
